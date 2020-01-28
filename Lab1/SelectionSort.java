@@ -1,19 +1,18 @@
 
-public class InsertionSort implements SortStrategy{
+public class SelectionSort implements SortStrategy{
 	static long startTime;
 	static long endTime;
 	public long[]sort(long[] ar)
 	{
 		startTime = System.currentTimeMillis();
-		for (int i=1; i<ar.length; i++)
+		for (int i = 0;i<ar.length -1; i++)
 		   {
-		      long index = ar[i]; int j = i;
-		      while (j > 0 && ar[j-1] > index)
-		      {
-		           ar[j] = ar[j-1];
-		           j--;
-		      }
-		      ar[j] = index;
+		      int min = i;
+		      for (int j = i+1; j<ar.length; j++)
+		            if (ar[j]<ar[min]) min = j;
+		      long temp = ar[i];
+		      ar[i] = ar[min];
+		      ar[min] = temp;
 		   } 
 		endTime = System.currentTimeMillis();
 		return ar;
@@ -27,7 +26,7 @@ public class InsertionSort implements SortStrategy{
 	}
 	public String strategyName()
 	{
-		return "Insertion";
+		return "SelectionSort";
 	}
 
 }

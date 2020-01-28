@@ -1,20 +1,22 @@
 
-public class InsertionSort implements SortStrategy{
+public class BubbleSort implements SortStrategy{
 	static long startTime;
 	static long endTime;
 	public long[]sort(long[] ar)
 	{
 		startTime = System.currentTimeMillis();
-		for (int i=1; i<ar.length; i++)
+		 for (int i = (ar.length - 1); i >= 0; i--)
 		   {
-		      long index = ar[i]; int j = i;
-		      while (j > 0 && ar[j-1] > index)
+		      for (int j = 1; j < i; j++)
 		      {
-		           ar[j] = ar[j-1];
-		           j--;
-		      }
-		      ar[j] = index;
-		   } 
+		         if (ar[j-1] > ar[j])
+		         {
+		              long temp = ar[j-1];
+		              ar[j-1] = ar[j];
+		              ar[j] = temp;
+		         } 
+		       } 
+		    } 
 		endTime = System.currentTimeMillis();
 		return ar;
 	}
@@ -27,7 +29,7 @@ public class InsertionSort implements SortStrategy{
 	}
 	public String strategyName()
 	{
-		return "Insertion";
+		return "BubbleSort";
 	}
 
 }
